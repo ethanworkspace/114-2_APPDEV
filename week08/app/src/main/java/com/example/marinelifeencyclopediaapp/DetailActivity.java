@@ -1,15 +1,19 @@
 package com.example.marinelifeencyclopediaapp;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class DetailActivity extends AppCompatActivity {
 
+    private static final String TAG = "DetailActivityLifecycle";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate called");
         setContentView(R.layout.activity_detail);
 
         // 取得 Intent 傳來的資料
@@ -37,5 +41,17 @@ public class DetailActivity extends AppCompatActivity {
 
         // 返回按鈕
         findViewById(R.id.btnBack).setOnClickListener(v -> finish());
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause called");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG, "onRestart called");
     }
 }
